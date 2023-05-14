@@ -28,6 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets_admin/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('modules/izitoast/css/iziToast.min.css') }}">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -123,6 +124,26 @@
 
   <!-- Template Main JS File -->
   <script src="assets_admin/js/main.js"></script>
+  <script src="{{ asset("modules/izitoast/js/iziToast.min.js") }}"></script>
+
+  @if(Session::has('message'))
+    <script>
+        iziToast.success({
+            title: "{{ Session::get('title') }}",
+            message: "{{ Session::get('message') }}",
+            position: 'topRight'
+        });
+    </script>
+    @endif
+
+    @if(Session::has('error'))
+    <script>
+        iziToast.error({
+            message: "{{ Session::get('error') }}",
+            position: 'topRight'
+        });
+    </script>
+    @endif
 
 </body>
 

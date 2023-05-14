@@ -27,6 +27,7 @@ Route::get('/', [HomeController::class, 'index'])->name('user.home');
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
+    Route::post('/update-user/{id}', [HistoryController::class, 'updateUser'])->name('update.user');
 });
 
 Route::get('login', [AuthController::class, 'login'])->name('auth.login');

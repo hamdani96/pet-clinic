@@ -36,6 +36,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets_user/css/main.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('modules/izitoast/css/iziToast.min.css') }}">
 
   <!-- =======================================================
   * Template Name: HeroBiz
@@ -61,6 +62,41 @@
 
   </main><!-- End #main -->
 
+  @if (Auth::user())
+  <div class="modal fade" id="modal-setting" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Pengaturan</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{{ route('update.user', Auth::user()->id) }}" autocomplete="off" method="post"> @csrf
+          <div class="modal-body">
+            <div class="row">
+              <div class="form-group col-md-12 mt-3">
+                <label for="">Nama <span class="text-danger">*</span></label>
+                <input type="text" name="" id="" required value="{{ Auth::user()->name }}" disabled class="form-control">
+              </div>
+              <div class="form-group col-md-12 mt-3">
+                  <label for="">Email <span class="text-danger">*</span></label>
+                  <input type="email" name="email" required value="{{ Auth::user()->email }}" id="" class="form-control">
+              </div>
+              <div class="form-group col-md-12 mt-3">
+                  <label for="">Password <span class="text-danger">*</span></label>
+                  <input type="password" name="password" value="" id="" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  @endif
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
@@ -99,6 +135,26 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets_user/js/main.js') }}"></script>
+  <script src="{{ asset("modules/izitoast/js/iziToast.min.js") }}"></script>
+
+  @if(Session::has('message'))
+    <script>
+        iziToast.success({
+            title: "{{ Session::get('title') }}",
+            message: "{{ Session::get('message') }}",
+            position: 'topRight'
+        });
+    </script>
+    @endif
+
+    @if(Session::has('error'))
+    <script>
+        iziToast.error({
+            message: "{{ Session::get('error') }}",
+            position: 'topRight'
+        });
+    </script>
+    @endif
 
 </body>
 

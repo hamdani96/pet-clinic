@@ -30,6 +30,7 @@
           {{ Auth::user()->name }}
         </button>
         <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#modal-setting" data-bs-toggle="modal">Pengaturan</a></li>
           <li><a class="dropdown-item" href="{{ route('history.index') }}">Riwayat</a></li>
           <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="dropdown-item">
             <i class="bi bi-box-arrow-right"></i>
@@ -40,6 +41,7 @@
           </a>
         </ul>
       </div>
+      
       @else
       <a class="btn-getstarted scrollto" href="{{ route('auth.login') }}">Login</a>
     @endif
