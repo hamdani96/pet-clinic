@@ -24,11 +24,11 @@ class UserSeeder extends Seeder
         ]);
 
         // user
-        User::create([
-            'name'  => 'Muten Roshi',
-            'email' => 'roshi@gmail.com',
-            'password'  => Hash::make('12345678'),
-            'role'      => 'user',
-        ]);
+        // User::create([
+        //     'name'  => 'Muten Roshi',
+        //     'email' => 'roshi@gmail.com',
+        //     'password'  => Hash::make('12345678'),
+        //     'role'      => 'user',
+        // ]);
     }
 }

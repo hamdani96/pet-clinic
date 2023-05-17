@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('name')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->decimal('price', 17,2)->default(0);
+            $table->integer('price')->default(0);
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamp('delete_at')->nullable();
